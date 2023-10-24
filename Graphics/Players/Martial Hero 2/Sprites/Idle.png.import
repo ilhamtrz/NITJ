@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brxuhmhoxkwxo"
-path="res://.godot/imported/Grass.png-3a97bf9dffcc2ad819643a7f2a997e74.ctex"
+uid="uid://d1sl6ms5sqt36"
+path="res://.godot/imported/Idle.png-1d3a5ee1e9c6223f604a83bf5a477be9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilesets/Grass.png"
-dest_files=["res://.godot/imported/Grass.png-3a97bf9dffcc2ad819643a7f2a997e74.ctex"]
+source_file="res://Graphics/Players/Martial Hero 2/Sprites/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-1d3a5ee1e9c6223f604a83bf5a477be9.ctex"]
 
 [params]
 

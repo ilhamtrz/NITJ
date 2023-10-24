@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmbb4vq0wgyhr"
-path="res://.godot/imported/Fences.png-3e1d43ba969fc87378d47e42eea96ebb.ctex"
+uid="uid://6kvvjncyhyh0"
+path="res://.godot/imported/Wooden House.png-f276bc8d1ac15ec696872989a0a949cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilesets/Fences.png"
-dest_files=["res://.godot/imported/Fences.png-3e1d43ba969fc87378d47e42eea96ebb.ctex"]
+source_file="res://Graphics/Tilesets/Wooden House.png"
+dest_files=["res://.godot/imported/Wooden House.png-f276bc8d1ac15ec696872989a0a949cf.ctex"]
 
 [params]
 
