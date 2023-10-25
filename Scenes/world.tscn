@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwetv0hpabniu"]
+[gd_scene load_steps=6 format=3 uid="uid://dwetv0hpabniu"]
 
 [ext_resource type="Texture2D" uid="uid://brxuhmhoxkwxo" path="res://Graphics/Tilesets/Grass.png" id="1_xsmbk"]
 [ext_resource type="PackedScene" uid="uid://bh4hum6xfvdwj" path="res://Scenes/player.tscn" id="2_u8rp2"]
+[ext_resource type="PackedScene" uid="uid://d4jilt7gqydwh" path="res://Scenes/enemy.tscn" id="3_vfsxm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv2vr"]
 texture = ExtResource("1_xsmbk")
@@ -93,3 +94,6 @@ layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, -65535, 0, 0, -6553
 
 [node name="Player" parent="." instance=ExtResource("2_u8rp2")]
 position = Vector2(287, 183)
+
+[node name="Enemy" parent="." instance=ExtResource("3_vfsxm")]
+position = Vector2(845, 126)

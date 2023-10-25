@@ -3,18 +3,23 @@
 [ext_resource type="Texture2D" uid="uid://d1sl6ms5sqt36" path="res://Graphics/Players/Martial Hero 2/Sprites/Idle.png" id="1_cc020"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_r62k1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epa6a"]
-size = Vector2(34, 59)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riuhg"]
+radius = 7.0
+height = 59.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
 script = ExtResource("1_r62k1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerImage" type="Sprite2D" parent="."]
 texture = ExtResource("1_cc020")
-region_enabled = true
+hframes = 4
 region_rect = Rect2(80.1396, 70.5833, 38.2762, 60.8295)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -0.5)
-shape = SubResource("RectangleShape2D_epa6a")
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+shape = SubResource("CapsuleShape2D_riuhg")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.585, 1.585)
