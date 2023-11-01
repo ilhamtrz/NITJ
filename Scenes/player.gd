@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const speed = 200.0
+@export var movement_speed = 200.0
+@export var hp = 100.0
 @onready var sprite = $PlayerImage
 @onready var walkTimer = %walkTimer
 
@@ -24,6 +25,6 @@ func movement():
 			else:
 				sprite.frame += 1
 			walkTimer.start()
-			
-	velocity = direction.normalized() * speed
+	
+	velocity = direction.normalized() * movement_speed
 	move_and_slide()
