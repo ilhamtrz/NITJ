@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwetv0hpabniu"]
 
 [ext_resource type="Texture2D" uid="uid://brxuhmhoxkwxo" path="res://Graphics/Tilesets/Grass.png" id="1_xsmbk"]
-[ext_resource type="PackedScene" uid="uid://bh4hum6xfvdwj" path="res://Scenes/player.tscn" id="2_u8rp2"]
-[ext_resource type="PackedScene" uid="uid://d4jilt7gqydwh" path="res://Scenes/enemy.tscn" id="3_vfsxm"]
+[ext_resource type="PackedScene" uid="uid://bh4hum6xfvdwj" path="res://Scenes/Player/player.tscn" id="2_u8rp2"]
+[ext_resource type="PackedScene" uid="uid://d4jilt7gqydwh" path="res://Scenes/Enemies/enemy.tscn" id="3_vfsxm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv2vr"]
 texture = ExtResource("1_xsmbk")
