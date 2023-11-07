@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bh4hum6xfvdwj"]
 
-[ext_resource type="Script" path="res://Scenes/player.gd" id="1_r62k1"]
-[ext_resource type="Texture2D" uid="uid://ixih0iowqh64" path="res://Graphics/Players/Martial Hero 2/Sprites/Run.png" id="2_3gqvg"]
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_ewn0b"]
+[ext_resource type="Texture2D" uid="uid://ixih0iowqh64" path="res://Graphics/Players/Martial Hero 2/Sprites/Run.png" id="2_u2pem"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riuhg"]
 radius = 7.0
@@ -9,10 +9,10 @@ height = 59.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
-script = ExtResource("1_r62k1")
+script = ExtResource("1_ewn0b")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
-texture = ExtResource("2_3gqvg")
+texture = ExtResource("2_u2pem")
 hframes = 8
 region_rect = Rect2(80.1396, 70.5833, 38.2762, 60.8295)
 
