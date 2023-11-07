@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://vasccqf7feai"]
+[gd_scene load_steps=2 format=3 uid="uid://7tly8n6lhlck"]
 
-[ext_resource type="Script" path="res://Scenes/Utility/hit_box.gd" id="1_wegk3"]
+[ext_resource type="Script" path="res://Scenes/Utility/hurt_box.gd" id="1_pf57d"]
 
-[node name="HitBox" type="Area2D" groups=["attack"]]
+[node name="HurtBox" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_wegk3")
+script = ExtResource("1_pf57d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -13,4 +13,5 @@ script = ExtResource("1_wegk3")
 wait_time = 0.5
 one_shot = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DisableTimer" to="." method="_on_disable_timer_timeout"]
