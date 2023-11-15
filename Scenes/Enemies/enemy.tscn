@@ -13,7 +13,7 @@ height = 22.0
 size = Vector2(14, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhvky"]
-size = Vector2(18, 33)
+size = Vector2(35, 35)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 5
@@ -27,10 +27,12 @@ hframes = 12
 region_rect = Rect2(0.176439, -0.103357, 152.061, 150.117)
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 8)
 shape = SubResource("CapsuleShape2D_il2id")
 
 [node name="HitBox" parent="." instance=ExtResource("4_gqxvc")]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -43,7 +45,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(2, 8.5)
+position = Vector2(-1.5, 9.5)
 shape = SubResource("RectangleShape2D_dhvky")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

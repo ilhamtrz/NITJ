@@ -67,10 +67,8 @@ func _on_ice_spear_timer_timeout():
 
 func _on_ice_spear_attack_timer_timeout():
 	if icespear_ammo > 0:
-		print("player position: ", position )
 		var icespear_attack = iceSpear.instantiate()
-		icespear_attack.position = position
-		print("ice spear position: ", icespear_attack.position)
+		icespear_attack.position = Vector2.ZERO
 		icespear_attack.target = get_random_target()
 		icespear_attack.level = icespear_level
 		add_child(icespear_attack)
