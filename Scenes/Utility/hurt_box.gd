@@ -10,6 +10,7 @@ signal hurt(damage)
 
 func _on_area_entered(area):
 	if area.is_in_group("attack"):
+		print("attack hit")
 		if not area.get("damage") == null:
 			match HurtBoxType:
 				0: #Cooldown
