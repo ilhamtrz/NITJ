@@ -9,6 +9,7 @@ size = Vector2(7.77817, 34.6482)
 
 [node name="spear" type="Area2D" groups=["attack"]]
 top_level = true
+scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_bixun")
