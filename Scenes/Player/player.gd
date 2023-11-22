@@ -11,7 +11,7 @@ var iceSpear = preload("res://Scenes/Player/spear.tscn")
 @onready var iceSpearAttackTimer = %IceSpearAttackTimer
 
 #IceSpear
-var icespear_ammo = 1
+var icespear_ammo = 0
 var icespear_baseammo = 1
 var icespear_attackspeed = 1.5
 var icespear_level = 1
