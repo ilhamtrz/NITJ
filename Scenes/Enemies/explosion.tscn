@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4jehtbun58gr"]
+[gd_scene load_steps=7 format=3 uid="uid://d4jehtbun58gr"]
 
 [ext_resource type="Texture2D" uid="uid://djw078marbl3s" path="res://Textures/Enemy/explosion_pixelfied.png" id="1_bpkk8"]
+[ext_resource type="Script" path="res://Scenes/Enemies/explosion.gd" id="2_apgfs"]
 [ext_resource type="AudioStream" uid="uid://c4k2p2ndv6gsc" path="res://Audio/SoundEffect/enemy_death.ogg" id="2_kdir6"]
 
 [sub_resource type="Animation" id="Animation_yigys"]
 resource_name = "explode"
 length = 0.32
-loop_mode = 1
 step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -43,16 +43,21 @@ _data = {
 }
 
 [node name="Explosion" type="Sprite2D"]
+z_index = 1
 texture = ExtResource("1_bpkk8")
 hframes = 4
 vframes = 4
+script = ExtResource("2_apgfs")
 
 [node name="sound_explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kdir6")
 volume_db = -10.0
 pitch_scale = 0.5
+autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mhkho")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
