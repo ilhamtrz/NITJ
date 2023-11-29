@@ -7,6 +7,9 @@ var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $EnemyImage
+@onready var sound_hit = $SoundHit
+
+signal remove_from_array(object)
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -25,4 +28,7 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage
 	knockback = angle * knockback_amount
 	if hp <= 0:
+		emit_signal("remove_from_array",self)
 		queue_free()
+	else:
+		sound_hit.play()

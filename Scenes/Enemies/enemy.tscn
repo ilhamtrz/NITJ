@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4jilt7gqydwh"]
+[gd_scene load_steps=9 format=3 uid="uid://d4jilt7gqydwh"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_mgtte"]
 [ext_resource type="Texture2D" uid="uid://c3qtw27kh0bwb" path="res://Graphics/Enemies/Goblin/Attack3.png" id="2_t8dye"]
 [ext_resource type="PackedScene" uid="uid://7tly8n6lhlck" path="res://Scenes/Utility/hurt_box.tscn" id="3_oay1t"]
 [ext_resource type="PackedScene" uid="uid://vasccqf7feai" path="res://Scenes/Utility/hit_box.tscn" id="4_gqxvc"]
+[ext_resource type="AudioStream" uid="uid://2dcnxyd6rmyh" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_7kuap"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il2id"]
 radius = 6.0
@@ -48,6 +49,10 @@ collision_mask = 4
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(-1.5, 9.5)
 shape = SubResource("RectangleShape2D_dhvky")
+
+[node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7kuap")
+volume_db = -10.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
