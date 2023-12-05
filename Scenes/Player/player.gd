@@ -3,8 +3,10 @@ extends CharacterBody2D
 @export var movement_speed = 200.0
 @export var hp = 100.0
 
+var last_movement = Vector2.UP
+
 #Attacks
-var iceSpear = preload("res://Scenes/Player/spear.tscn")
+var iceSpear = preload("res://Scenes/Player/Attack/spear.tscn")
 
 #AttackNodes
 @onready var iceSpearTimer = %IceSpearTimer
@@ -37,14 +39,17 @@ func attack():
 
 func movement():
 	# move input
-	var direction = Input.get_vector("player_left","player_right","player_up","player_down")
-	
-	if direction.x < 0:
-		sprite.flip_h = true
-	elif direction.x > 0:
+	var x_mov = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
+	var y_mov = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
+	var mov = Vector2(x_mov,y_mov)
+	if mov.x > 0:
 		sprite.flip_h = false
-	
-	if direction != Vector2.ZERO:
+	elif mov.x < 0:
+		sprite.flip_h = true
+		
+
+	if mov != Vector2.ZERO:
+		last_movement = mov
 		if walkTimer.is_stopped():
 			if sprite.frame >= sprite.hframes - 1:
 				sprite.frame = 0
@@ -52,7 +57,7 @@ func movement():
 				sprite.frame += 1
 			walkTimer.start()
 	
-	velocity = direction.normalized() * movement_speed
+	velocity = mov.normalized()*movement_speed
 	move_and_slide()
 
 
