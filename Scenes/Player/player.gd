@@ -30,7 +30,7 @@ var tornado_attackspeed = 3
 var tornado_level = 0
 
 #Javelin
-var javelin_ammo = 1
+var javelin_ammo = 3
 var javelin_level = 1
 
 #Enemy Related

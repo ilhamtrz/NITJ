@@ -5,7 +5,7 @@ var hp = 9999
 var speed = 200.0
 var damage = 10
 var knockback_amount = 100
-var paths = 1
+var paths = 3
 var attack_size = 1.0
 var attack_speed = 5.0
 
