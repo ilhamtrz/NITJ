@@ -5,6 +5,10 @@ extends CharacterBody2D
 
 var last_movement = Vector2.UP
 
+var experience = 0
+var experience_level = 1
+var collected_experience = 0
+
 #Attacks
 var iceSpear = preload("res://Scenes/Player/Attack/spear.tscn")
 var tornado = preload("res://Scenes/Player/Attack/tornado.tscn")
