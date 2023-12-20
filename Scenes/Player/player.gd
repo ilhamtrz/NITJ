@@ -43,8 +43,13 @@ var enemy_close = []
 @onready var sprite = $PlayerImage
 @onready var walkTimer = %walkTimer
 
+#GUI
+@onready var expBar = %ExperienceBar
+@onready var lblLevel = %lbl_level
+
 func _ready():
 	attack()
+	set_expbar(experience, calculate_experiencecap())
 
 func _physics_process(_delta):
 	movement()
@@ -171,7 +176,7 @@ func calculate_experience(gem_exp):
 	if experience + collected_experience >= exp_required: #level up
 		collected_experience -= exp_required - experience
 		experience_level += 1
-		print("Level:",experience_level)
+		lblLevel.text = str("Level: ",experience_level)
 		experience = 0
 		exp_required = calculate_experiencecap()
 		calculate_experience(0)
@@ -180,7 +185,7 @@ func calculate_experience(gem_exp):
 		experience += collected_experience
 		collected_experience = 0
 	
-	#set_expbar(experience, exp_required)
+	set_expbar(experience, exp_required)
 	
 func calculate_experiencecap():
 	var exp_cap = experience_level
@@ -190,9 +195,11 @@ func calculate_experiencecap():
 		exp_cap + 95 * (experience_level-19)*8
 	else:
 		exp_cap = 255 + (experience_level-39)*12
-		
 	return exp_cap
 
+func set_expbar(set_value = 1, set_max_value = 100):
+	expBar.value = set_value
+	expBar.max_value = set_max_value
 
 
 

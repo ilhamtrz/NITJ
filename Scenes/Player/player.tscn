@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh4hum6xfvdwj"]
+[gd_scene load_steps=12 format=3 uid="uid://bh4hum6xfvdwj"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_ewn0b"]
 [ext_resource type="Texture2D" uid="uid://ixih0iowqh64" path="res://Graphics/Players/Martial Hero 2/Sprites/Run.png" id="2_u2pem"]
 [ext_resource type="PackedScene" uid="uid://7tly8n6lhlck" path="res://Scenes/Utility/hurt_box.tscn" id="3_86y4h"]
+[ext_resource type="Texture2D" uid="uid://cf15vs3ta6pb4" path="res://Textures/GUI/exp_background.png" id="4_puqt6"]
+[ext_resource type="Texture2D" uid="uid://bq1vf88vs2rx3" path="res://Textures/GUI/exp_progress.png" id="5_n04la"]
+[ext_resource type="FontFile" uid="uid://bq6g57582qssp" path="res://Font/tenderness.otf" id="6_c1bef"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riuhg"]
 radius = 7.0
@@ -92,6 +95,37 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 position = Vector2(3, 2)
 shape = SubResource("CircleShape2D_sas3k")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUILayer"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 158.0
+offset_bottom = 87.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 30.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_puqt6")
+texture_progress = ExtResource("5_n04la")
+
+[node name="lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1125.0
+offset_top = 1.78
+offset_right = 1275.0
+offset_bottom = 28.78
+theme_override_fonts/font = ExtResource("6_c1bef")
+theme_override_font_sizes/font_size = 26
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
