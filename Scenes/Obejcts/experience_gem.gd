@@ -7,7 +7,7 @@ var spr_red = preload("res://Textures/Items/Gems/Gem_red.png")
 var spr_blue = preload("res://Textures/Items/Gems/Gem_blue.png")
 
 var target = null
-var speed = 0
+var speed = -1
 
 @onready var sprite = $Sprite
 @onready var collision = $CollisionShape2D
