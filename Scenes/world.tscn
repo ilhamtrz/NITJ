@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwetv0hpabniu"]
+[gd_scene load_steps=9 format=3 uid="uid://dwetv0hpabniu"]
 
 [ext_resource type="Texture2D" uid="uid://brxuhmhoxkwxo" path="res://Graphics/Tilesets/Grass.png" id="1_xsmbk"]
 [ext_resource type="PackedScene" uid="uid://bh4hum6xfvdwj" path="res://Scenes/Player/player.tscn" id="2_u8rp2"]
 [ext_resource type="PackedScene" uid="uid://bt5fpc5f658of" path="res://Scenes/Utility/enemy_spawner.tscn" id="3_6j7s2"]
 [ext_resource type="PackedScene" uid="uid://d4jilt7gqydwh" path="res://Scenes/Enemies/enemy.tscn" id="3_vfsxm"]
 [ext_resource type="Script" path="res://Scenes/Utility/spawn_info.gd" id="5_rmnmd"]
-[ext_resource type="PackedScene" uid="uid://cilmwu4s1uxjc" path="res://Scenes/Obejcts/experience_gem.tscn" id="6_8dc4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv2vr"]
 texture = ExtResource("1_xsmbk")
@@ -109,25 +108,4 @@ position = Vector2(663, 464)
 [node name="EnemySpawner" parent="." instance=ExtResource("3_6j7s2")]
 spawns = Array[ExtResource("5_rmnmd")]([SubResource("Resource_s7e5s")])
 
-[node name="Loot" type="Node2D" parent="."]
-
-[node name="ExperienceGem" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(926, 515)
-
-[node name="ExperienceGem2" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(797, 542)
-
-[node name="ExperienceGem3" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(937, 421)
-
-[node name="ExperienceGem4" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(797, 415)
-
-[node name="ExperienceGem5" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(623, 551)
-
-[node name="ExperienceGem6" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(447, 383)
-
-[node name="ExperienceGem7" parent="Loot" instance=ExtResource("6_8dc4j")]
-position = Vector2(658, 380)
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]

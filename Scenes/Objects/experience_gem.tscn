@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cilmwu4s1uxjc"]
 
-[ext_resource type="Script" path="res://Scenes/Obejcts/experience_gem.gd" id="1_x5ie4"]
-[ext_resource type="Texture2D" uid="uid://rdgq6md2iwue" path="res://Textures/Items/Gems/Gem_green.png" id="2_w6d75"]
-[ext_resource type="AudioStream" uid="uid://dhoa7waeb3pbh" path="res://Audio/SoundEffect/collectgem.mp3" id="3_nxvt5"]
+[ext_resource type="Script" path="res://Scenes/Objects/experience_gem.gd" id="1_5s4n1"]
+[ext_resource type="Texture2D" uid="uid://rdgq6md2iwue" path="res://Textures/Items/Gems/Gem_green.png" id="2_ufogu"]
+[ext_resource type="AudioStream" uid="uid://dhoa7waeb3pbh" path="res://Audio/SoundEffect/collectgem.mp3" id="3_jabva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjnq0"]
 size = Vector2(10, 11)
@@ -10,16 +10,16 @@ size = Vector2(10, 11)
 [node name="ExperienceGem" type="Area2D" groups=["loot"]]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_x5ie4")
+script = ExtResource("1_5s4n1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_w6d75")
+texture = ExtResource("2_ufogu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_xjnq0")
 
 [node name="sound_collected" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_nxvt5")
+stream = ExtResource("3_jabva")
 volume_db = -10.0
