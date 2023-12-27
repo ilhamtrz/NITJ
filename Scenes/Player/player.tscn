@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh4hum6xfvdwj"]
+[gd_scene load_steps=13 format=3 uid="uid://bh4hum6xfvdwj"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_ewn0b"]
 [ext_resource type="Texture2D" uid="uid://ixih0iowqh64" path="res://Graphics/Players/Martial Hero 2/Sprites/Run.png" id="2_u2pem"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cf15vs3ta6pb4" path="res://Textures/GUI/exp_background.png" id="4_puqt6"]
 [ext_resource type="Texture2D" uid="uid://bq1vf88vs2rx3" path="res://Textures/GUI/exp_progress.png" id="5_n04la"]
 [ext_resource type="FontFile" uid="uid://bq6g57582qssp" path="res://Font/tenderness.otf" id="6_c1bef"]
+[ext_resource type="AudioStream" uid="uid://bdp2e7vrdahm1" path="res://Audio/SoundEffect/levelup.ogg" id="7_cio1s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riuhg"]
 radius = 7.0
@@ -126,6 +127,45 @@ theme_override_font_sizes/font_size = 26
 text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 860.0
+offset_top = -250.0
+offset_right = 1260.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lbl_LevelUp" type="Label" parent="GUILayer/GUI/LevelUp"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("6_c1bef")
+theme_override_font_sizes/font_size = 0
+text = "Level Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 380.0
+offset_bottom = 200.0
+
+[node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
+stream = ExtResource("7_cio1s")
+volume_db = -10.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
