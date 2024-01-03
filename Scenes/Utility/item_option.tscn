@@ -22,7 +22,7 @@ offset_right = 52.0
 offset_bottom = 52.0
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+[node name="ItemIcon" type="TextureRect" parent="ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
