@@ -21,6 +21,15 @@ var javelin = preload("res://Scenes/Player/Attack/javelin.tscn")
 @onready var tornadoAttackTimer = %TornadoAttackTimer
 @onready var javelinBase = $Attack/JavelinBase
 
+#UPGRADES
+var collected_upgrades = []
+var upgrade_options = []
+var armor = 0
+var speed = 0
+var spell_cooldown = 0
+var spell_size = 0
+var additional_attacks = 0
+
 #IceSpear
 var icespear_ammo = 0
 var icespear_baseammo = 0
@@ -214,6 +223,7 @@ func levelup():
 	var optionsmax = 3
 	while options < optionsmax:
 		var option_choice = itemOptions.instantiate()
+		option_choice.item = get_random_item()
 		upgradeOptions.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
@@ -222,10 +232,39 @@ func upgrade_character(upgrade):
 	var option_children = upgradeOptions.get_children()
 	for i in option_children:
 		i.queue_free()
+	upgrade_options.clear()
+	collected_upgrades.append(upgrade)
 	levelPanel.visible = false
 	levelPanel.position = Vector2(1500,50)
 	get_tree().paused = false
 	calculate_experience(0)
 
+func get_random_item():
+	var dblist = []
+	for i in UpgradeDb.UPGRADES:
+		if i in collected_upgrades: #Find already collected upgrades
+			pass
+		elif i in upgrade_options: #If the upgrade is already an option
+			pass
+		elif UpgradeDb.UPGRADES[i]["type"] == "item": #Don't pick food
+			pass
+		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #Check for PreRequisites
+			#var to_add = true
+			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
+				if not n in collected_upgrades:
+					#to_add = false
+					pass
+				else:
+					dblist.append(i)
+			#if to_add:
+				#dblist.append(i)
+		else:
+			dblist.append(i)
+	if dblist.size() > 0:
+		var randomitem = dblist.pick_random()
+		upgrade_options.append(randomitem)
+		return randomitem
+	else:
+		return null
 
 
