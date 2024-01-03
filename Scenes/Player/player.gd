@@ -298,15 +298,12 @@ func get_random_item():
 		elif UpgradeDb.UPGRADES[i]["type"] == "item": #Don't pick food
 			pass
 		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #Check for PreRequisites
-			#var to_add = true
+			var to_add = true
 			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
 				if not n in collected_upgrades:
-					#to_add = false
-					pass
-				else:
-					dblist.append(i)
-			#if to_add:
-				#dblist.append(i)
+					to_add = false
+			if to_add:
+				dblist.append(i)
 		else:
 			dblist.append(i)
 	if dblist.size() > 0:
