@@ -23,19 +23,19 @@ var javelin = preload("res://Scenes/Player/Attack/javelin.tscn")
 
 #IceSpear
 var icespear_ammo = 0
-var icespear_baseammo = 1
+var icespear_baseammo = 0
 var icespear_attackspeed = 1.5
 var icespear_level = 0
 
 #Tornado
 var tornado_ammo = 0
-var tornado_baseammo = 5
+var tornado_baseammo = 0
 var tornado_attackspeed = 3
 var tornado_level = 0
 
 #Javelin
-var javelin_ammo = 3
-var javelin_level = 1
+var javelin_ammo = 0
+var javelin_level = 0
 
 #Enemy Related
 var enemy_close = []
