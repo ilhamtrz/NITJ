@@ -12,10 +12,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riuhg"]
 radius = 7.0
-height = 44.0
+height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vslxu"]
-size = Vector2(11, 22.5)
+size = Vector2(20, 36)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei4vs"]
 radius = 470.038
@@ -52,7 +52,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(6.5, 1.25)
+position = Vector2(4, 8)
 shape = SubResource("RectangleShape2D_vslxu")
 
 [node name="Attack" type="Node2D" parent="."]
@@ -85,6 +85,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_ei4vs")
 
 [node name="GrabArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -92,6 +93,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_3reaq")
 
 [node name="CollectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -129,6 +131,19 @@ theme_override_font_sizes/font_size = 26
 text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 610.0
+offset_top = 405.0
+offset_right = 642.0
+offset_bottom = 413.0
+scale = Vector2(2, 2)
+value = 90.0
+texture_over = ExtResource("8_4jlsc")
+texture_progress = ExtResource("9_cssay")
 
 [node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -169,18 +184,22 @@ unique_name_in_owner = true
 stream = ExtResource("7_cio1s")
 volume_db = -10.0
 
-[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+[node name="lblTimer" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.392157)
-layout_mode = 0
-offset_left = 610.0
-offset_top = 405.0
-offset_right = 642.0
-offset_bottom = 413.0
-scale = Vector2(2, 2)
-value = 90.0
-texture_over = ExtResource("8_4jlsc")
-texture_progress = ExtResource("9_cssay")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = 34.91
+offset_right = 46.0
+offset_bottom = 75.9101
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_c1bef")
+theme_override_font_sizes/font_size = 40
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

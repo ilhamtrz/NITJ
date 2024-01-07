@@ -92,8 +92,8 @@ script = ExtResource("5_rmnmd")
 time_start = 0
 time_end = 300
 enemy = ExtResource("3_vfsxm")
-enemy_num = 2
-enemy_spawn_delay = 1
+enemy_num = 5
+enemy_spawn_delay = 0
 
 [node name="World" type="Node2D"]
 

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var movement_speed = 200.0
 @export var hp = 100.0
 @export var maxhp = 100.0
+var time = 0
 
 var last_movement = Vector2.UP
 
@@ -60,11 +61,14 @@ var enemy_close = []
 @onready var upgradeOptions =  %UpgradeOptions
 @onready var itemOptions = preload("res://Scenes/Utility/item_option.tscn")
 @onready var sndLevelUp = %snd_levelup
+@onready var healthBar = %HealthBar
+@onready var lblTimer = %lblTimer
 
 func _ready():
 	upgrade_character("icespear1")
 	attack()
 	set_expbar(experience, calculate_experiencecap())
+	_on_hurt_box_hurt(0,0,0)
 
 func _physics_process(_delta):
 	movement()
@@ -108,7 +112,9 @@ func movement():
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor,1.0,999.0)
-	print(hp)
+	healthBar.max_value = maxhp
+	healthBar.value = hp
+	#print(hp)
 
 func _on_ice_spear_timer_timeout():
 	icespear_ammo += icespear_baseammo + additional_attacks
@@ -312,5 +318,15 @@ func get_random_item():
 		return randomitem
 	else:
 		return null
+		
+func change_time(argtime = 0):
+	time = argtime
+	var get_m = int(time/60.0)
+	var get_s = time % 60
+	if get_m < 10:
+		get_m = str(0,get_m)
+	if get_s < 10:
+		get_s = str(0,get_s)
+	lblTimer.text = str(get_m,":",get_s)
 
 
