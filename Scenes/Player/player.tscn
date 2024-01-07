@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh4hum6xfvdwj"]
+[gd_scene load_steps=15 format=3 uid="uid://bh4hum6xfvdwj"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_ewn0b"]
 [ext_resource type="Texture2D" uid="uid://ixih0iowqh64" path="res://Graphics/Players/Martial Hero 2/Sprites/Run.png" id="2_u2pem"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bq1vf88vs2rx3" path="res://Textures/GUI/exp_progress.png" id="5_n04la"]
 [ext_resource type="FontFile" uid="uid://bq6g57582qssp" path="res://Font/tenderness.otf" id="6_c1bef"]
 [ext_resource type="AudioStream" uid="uid://bdp2e7vrdahm1" path="res://Audio/SoundEffect/levelup.ogg" id="7_cio1s"]
+[ext_resource type="Texture2D" uid="uid://cdjjtpwufqesm" path="res://Textures/GUI/healthbar.png" id="8_4jlsc"]
+[ext_resource type="Texture2D" uid="uid://7tb1mgelopqw" path="res://Textures/GUI/health.png" id="9_cssay"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riuhg"]
 radius = 7.0
@@ -166,6 +168,19 @@ offset_bottom = 200.0
 unique_name_in_owner = true
 stream = ExtResource("7_cio1s")
 volume_db = -10.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 610.0
+offset_top = 405.0
+offset_right = 642.0
+offset_bottom = 413.0
+scale = Vector2(2, 2)
+value = 90.0
+texture_over = ExtResource("8_4jlsc")
+texture_progress = ExtResource("9_cssay")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
