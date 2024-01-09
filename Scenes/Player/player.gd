@@ -64,6 +64,12 @@ var enemy_close = []
 @onready var healthBar = %HealthBar
 @onready var lblTimer = %lblTimer
 
+#death
+@onready var deathPanel = %DeathPanel
+@onready var lblResult = $GUILayer/GUI/DeathPanel/lbl_Result
+@onready var sndVictory = $GUILayer/GUI/DeathPanel/snd_victory
+@onready var sndLose = $GUILayer/GUI/DeathPanel/snd_lose
+
 func _ready():
 	upgrade_character("icespear1")
 	attack()
@@ -114,6 +120,8 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor,1.0,999.0)
 	healthBar.max_value = maxhp
 	healthBar.value = hp
+	if hp <= 0:
+		death()
 	#print(hp)
 
 func _on_ice_spear_timer_timeout():
@@ -329,4 +337,21 @@ func change_time(argtime = 0):
 		get_s = str(0,get_s)
 	lblTimer.text = str(get_m,":",get_s)
 
+func death():
+	deathPanel.visible = true
+	emit_signal("playerdeath")
+	get_tree().paused = true
+	var tween = deathPanel.create_tween()
+	tween.tween_property(deathPanel,"position",Vector2(440,110),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	if time >= 300:
+		lblResult.text = "You Win"
+		sndVictory.play()
+	else:
+		lblResult.text = "You Lose"
+		sndLose.play()
 
+
+func _on_back_button_button_up():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

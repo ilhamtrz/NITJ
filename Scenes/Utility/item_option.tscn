@@ -44,11 +44,12 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 8.0
 offset_top = 54.0
-offset_right = 332.0
+offset_right = 356.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("3_aie1i")
-theme_override_font_sizes/font_size = 16
-text = "Description of Item"
+theme_override_font_sizes/font_size = 14
+text = "Description of Items"
+autowrap_mode = 2
 
 [node name="lbl_level" type="Label" parent="."]
 layout_mode = 0

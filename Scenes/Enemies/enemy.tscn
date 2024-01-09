@@ -21,7 +21,7 @@ collision_layer = 5
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_mgtte")
-hp = 1.0
+hp = 2.0
 
 [node name="EnemyImage" type="Sprite2D" parent="."]
 texture = ExtResource("2_t8dye")
