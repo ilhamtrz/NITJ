@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2ms1o1olmpox"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_4fjda"]
+[ext_resource type="FontFile" uid="uid://bq6g57582qssp" path="res://Font/tenderness.otf" id="1_n6510"]
+[ext_resource type="PackedScene" uid="uid://dwetv0hpabniu" path="res://Scenes/world.tscn" id="2_mw0w6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rl1e"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lm1h"]
+bg_color = Color(0, 0, 0, 0.490196)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bvl3"]
+bg_color = Color(0, 0, 0, 0.686275)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4fjda")
+mainGameScene = ExtResource("2_mw0w6")
+
+[node name="Background Color" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 0.180392, 0.368627, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_n6510")
+theme_override_font_sizes/font_size = 60
+text = "Nightmare in The Jungle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="PlayButtonMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBoxContainer/PlayButtonMarginContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_7rl1e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7lm1h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6bvl3")
+text = "Play"
+
+[node name="ExitButtonMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBoxContainer/ExitButtonMarginContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_7rl1e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7lm1h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6bvl3")
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBoxContainer/PlayButtonMarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBoxContainer/ExitButtonMarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]
