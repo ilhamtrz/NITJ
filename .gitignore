@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+NITJ.exe
+NITJ.console.exe
+Build/Nightmare in The Jungle.zip
