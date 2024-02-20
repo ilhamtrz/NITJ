@@ -63,6 +63,9 @@ var enemy_close = []
 @onready var sndLevelUp = %snd_levelup
 @onready var healthBar = %HealthBar
 @onready var lblTimer = %lblTimer
+@onready var collectedWeapons = %CollectedWeapons
+@onready var collectedUpgrades = %CollectedUpgrades
+@onready var itemContainer = preload("res://Scenes/GUI/item_container.tscn")
 
 #death
 @onready var deathPanel = %DeathPanel
@@ -291,6 +294,7 @@ func upgrade_character(upgrade):
 		"food":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
+	adjust_gui_collection(upgrade)
 	attack()
 	var option_children = upgradeOptions.get_children()
 	for i in option_children:
@@ -336,6 +340,23 @@ func change_time(argtime = 0):
 	if get_s < 10:
 		get_s = str(0,get_s)
 	lblTimer.text = str(get_m,":",get_s)
+
+func adjust_gui_collection(upgrade):
+	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]
+	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if get_type != "item":
+		var get_collected_displaynames = []
+		for i in collected_upgrades:
+			get_collected_displaynames.append(UpgradeDb.UPGRADES[i]["displayname"])
+		if not get_upgraded_displayname in get_collected_displaynames:
+			var new_item = itemContainer.instantiate()
+			new_item.upgrade = upgrade
+			match get_type:
+				"weapon":
+					collectedWeapons.add_child(new_item)
+				"upgrade":
+					collectedUpgrades.add_child(new_item)
+
 
 func death():
 	deathPanel.visible = true
