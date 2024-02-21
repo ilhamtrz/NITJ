@@ -3,7 +3,7 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 100
-var damage = 5
+var damage = 10
 var knockback_amount = 100
 var attack_size = 1.0
 
