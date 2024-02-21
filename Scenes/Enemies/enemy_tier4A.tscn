@@ -24,7 +24,7 @@ script = ExtResource("1_rkxgs")
 movement_speed = 40.0
 hp = 100.0
 knockback_recovery = 10.0
-experience = 5
+experience = 100
 enemy_damage = 5
 
 [node name="EnemyImage" type="Sprite2D" parent="."]
