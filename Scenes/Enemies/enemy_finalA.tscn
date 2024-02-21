@@ -21,10 +21,10 @@ collision_layer = 5
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_sql4j")
-movement_speed = 40.0
-hp = 100.0
-knockback_recovery = 10.0
-experience = 5
+movement_speed = 300.0
+hp = 99999.0
+knockback_recovery = 99999.0
+experience = 100
 enemy_damage = 5
 
 [node name="EnemyImage" type="Sprite2D" parent="."]

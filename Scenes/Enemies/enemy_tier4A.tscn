@@ -16,7 +16,7 @@ size = Vector2(14, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhvky"]
 size = Vector2(32, 32.5)
 
-[node name="Enemy_Tier3A" type="CharacterBody2D"]
+[node name="Enemy_Tier4A" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
