@@ -324,13 +324,29 @@ func get_random_item():
 				dblist.append(i)
 		else:
 			dblist.append(i)
+	#if dblist.size() > 0:
+		#var randomitem = dblist.pick_random()
+		#upgrade_options.append(randomitem)
+		#return randomitem
+	#else:
+		#return null
+	# Create a new instance of RandomNumberGenerator
+	var rng = RandomNumberGenerator.new()
+	# Set the seed value
+	rng.seed = hash("default")
 	if dblist.size() > 0:
-		var randomitem = dblist.pick_random()
-		upgrade_options.append(randomitem)
-		return randomitem
+		# Use the PRNG to generate a random index within the array
+		var random_index = rng.randi_range(0, dblist.size() - 1)
+		# Get the random item from the array
+		var random_item = dblist[random_index]
+		# Append the random item to upgrade_options (assuming it's an array)
+		upgrade_options.append(random_item)
+		# Return the random item
+		return random_item
 	else:
+		# If dblist is empty, return null or handle it accordingly
 		return null
-		
+
 func change_time(argtime = 0):
 	time = argtime
 	var get_m = int(time/60.0)
