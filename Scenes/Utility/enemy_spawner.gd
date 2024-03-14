@@ -1,14 +1,113 @@
 extends Node2D
 
+@export var enemyTier1: Array[Resource] = []
+@export var enemyTier2: Array[Resource] = []
+@export var enemyTier3: Array[Resource] = []
+@export var enemyTier4: Array[Resource] = []
+@export var enemyFinal: Array[Resource] = []
+
 @export var spawns: Array[Spawn_info] = []
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
-var time = 0
+@export var time = 0
 signal changetime(time)
 
 func _ready():
 	connect("changetime",Callable(player,"change_time"))
+	
+	#var rng = RandomNumberGenerator.new()
+	## Set the seed value
+	#rng.seed = hash("default")
+	#
+	#var selectedTier1 = rng.randi_range(0, enemyTier1.size() - 1)
+	#var selectedTier2 = rng.randi_range(0, enemyTier2.size() - 1)
+	#var selectedTier3 = rng.randi_range(0, enemyTier3.size() - 1)
+	#var selectedTier4 = rng.randi_range(0, enemyTier4.size() - 1)
+	#var selectedTierFinal = rng.randi_range(0, enemyFinal.size() - 1)
+	#
+	## initialize spawn_info
+	## Initialize Spawn_info instance 1
+	#var spawn1 = Spawn_info.new()
+	#spawn1.time_start = 0
+	#spawn1.time_end = 30
+	#spawn1.enemy = enemyTier1[selectedTier1]  # Set the path to your enemy resource
+	#spawn1.enemy_num = 1
+	#spawn1.enemy_spawn_delay = 0
+	#spawns.append(spawn1)
+	#
+	## Initialize Spawn_info instance 2
+	#var spawn2 = Spawn_info.new()
+	#spawn2.time_start = 30
+	#spawn2.time_end = 210
+	#spawn2.enemy = enemyTier1[selectedTier1]  # Set the path to your enemy resource
+	#spawn2.enemy_num = 2
+	#spawn2.enemy_spawn_delay = 0
+	#spawn2.append(spawn2)
+	#
+	## Initialize Spawn_info instance 3
+	#var spawn3 = Spawn_info.new()
+	#spawn3.time_start = 60
+	#spawn3.time_end = 180
+	#spawn3.enemy = enemyTier2[selectedTier2]  # Set the path to your enemy resource
+	#spawn3.enemy_num = 1
+	#spawn3.enemy_spawn_delay = 3
+	#spawn3.append(spawn3)
+	#
+	## Initialize Spawn_info instance 4
+	#var spawn4 = Spawn_info.new()
+	#spawn4.time_start = 180
+	#spawn4.time_end = 210
+	#spawn4.enemy = enemyTier2[selectedTier2]  # Set the path to your enemy resource
+	#spawn4.enemy_num = 1
+	#spawn4.enemy_spawn_delay = 2
+	#spawn4.append(spawn4)
+	#
+	## Initialize Spawn_info instance 5
+	#var spawn5 = Spawn_info.new()
+	#spawn5.time_start = 210
+	#spawn5.time_end = 240
+	#spawn5.enemy = enemyTier2[selectedTier2]  # Set the path to your enemy resource
+	#spawn5.enemy_num = 2
+	#spawn5.enemy_spawn_delay = 0
+	#spawn5.append(spawn5)
+	#
+	## Initialize Spawn_info instance 6
+	#var spawn6 = Spawn_info.new()
+	#spawn6.time_start = 240
+	#spawn6.time_end = 270
+	#spawn6.enemy = enemyTier3[selectedTier3]  # Set the path to your enemy resource
+	#spawn6.enemy_num = 1
+	#spawn6.enemy_spawn_delay = 0
+	#spawn6.append(spawn6)
+	#
+	## Initialize Spawn_info instance 7
+	#var spawn7 = Spawn_info.new()
+	#spawn7.time_start = 240
+	#spawn7.time_end = 240
+	#spawn7.enemy = enemyTier4[selectedTier4]  # Set the path to your enemy resource
+	#spawn7.enemy_num = 1
+	#spawn7.enemy_spawn_delay = 0
+	#spawn7.append(spawn7)
+	#
+	## Initialize Spawn_info instance 8
+	#var spawn8 = Spawn_info.new()
+	#spawn8.time_start = 270
+	#spawn8.time_end = 300
+	#spawn8.enemy = enemyTier2[selectedTier2]  # Set the path to your enemy resource
+	#spawn8.enemy_num = 4
+	#spawn8.enemy_spawn_delay = 0
+	#spawn8.append(spawn8)
+	#
+	## Initialize Spawn_info instance 9
+	#var spawn9 = Spawn_info.new()
+	#spawn9.time_start = 300
+	#spawn9.time_end = 300
+	#spawn9.enemy = enemyFinal[selectedTierFinal]  # Set the path to your enemy resource
+	#spawn9.enemy_num = 1
+	#spawn9.enemy_spawn_delay = 0
+	#spawn9.append(spawn9)
+   #
 
 func _on_timer_timeout():
 	time += 1

@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://i5hum54t8goq"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_fr1d5"]
+[ext_resource type="Texture2D" uid="uid://ej1ti6ymcktf" path="res://Graphics/Enemies/Goblin/Attack3B.png" id="2_1bjku"]
+[ext_resource type="PackedScene" uid="uid://vasccqf7feai" path="res://Scenes/Utility/hit_box.tscn" id="3_xe8ym"]
+[ext_resource type="PackedScene" uid="uid://7tly8n6lhlck" path="res://Scenes/Utility/hurt_box.tscn" id="4_j3unb"]
+[ext_resource type="AudioStream" uid="uid://2dcnxyd6rmyh" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_76nby"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il2id"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qcd"]
+size = Vector2(14, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhvky"]
+size = Vector2(35, 35)
+
+[node name="Enemy_Tier1B" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_fr1d5")
+hp = 10.0
+enemy_damage = 5
+
+[node name="EnemyImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_1bjku")
+hframes = 12
+region_rect = Rect2(0.176439, -0.103357, 152.061, 150.117)
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 8)
+shape = SubResource("CapsuleShape2D_il2id")
+
+[node name="HitBox" parent="." instance=ExtResource("3_xe8ym")]
+visible = false
+collision_layer = 2
+collision_mask = 2
+damage = 5
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(2, 8)
+shape = SubResource("RectangleShape2D_57qcd")
+
+[node name="HurtBox" parent="." instance=ExtResource("4_j3unb")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1.5, 9.5)
+shape = SubResource("RectangleShape2D_dhvky")
+
+[node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_76nby")
+volume_db = -10.0
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HitBox"]
+[editable path="HurtBox"]

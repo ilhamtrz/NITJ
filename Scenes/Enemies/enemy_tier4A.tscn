@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cs6yh21dk7ny6"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_rkxgs"]
-[ext_resource type="Texture2D" uid="uid://bx5mt6k067y41" path="res://Graphics/Enemies/cyclops.png" id="2_romlq"]
+[ext_resource type="Texture2D" uid="uid://dy3si3xoct6em" path="res://Graphics/Enemies/juggernaut.png" id="2_xwpvy"]
 [ext_resource type="PackedScene" uid="uid://vasccqf7feai" path="res://Scenes/Utility/hit_box.tscn" id="3_pkree"]
 [ext_resource type="PackedScene" uid="uid://7tly8n6lhlck" path="res://Scenes/Utility/hurt_box.tscn" id="4_qdawt"]
 [ext_resource type="AudioStream" uid="uid://2dcnxyd6rmyh" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_6t8yj"]
@@ -28,7 +28,7 @@ experience = 100
 enemy_damage = 5
 
 [node name="EnemyImage" type="Sprite2D" parent="."]
-texture = ExtResource("2_romlq")
+texture = ExtResource("2_xwpvy")
 hframes = 2
 region_rect = Rect2(0.176439, -0.103357, 152.061, 150.117)
 

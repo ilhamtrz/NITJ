@@ -330,6 +330,7 @@ func get_random_item():
 		#return randomitem
 	#else:
 		#return null
+		
 	# Create a new instance of RandomNumberGenerator
 	var rng = RandomNumberGenerator.new()
 	# Set the seed value
