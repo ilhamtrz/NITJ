@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxm5ycjftglna"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_hqrr0"]
+[ext_resource type="Texture2D" uid="uid://dax3c6xefxp4k" path="res://Graphics/Enemies/juggernautC.png" id="2_dehk4"]
+[ext_resource type="PackedScene" uid="uid://vasccqf7feai" path="res://Scenes/Utility/hit_box.tscn" id="3_vmue8"]
+[ext_resource type="PackedScene" uid="uid://7tly8n6lhlck" path="res://Scenes/Utility/hurt_box.tscn" id="4_aj68p"]
+[ext_resource type="AudioStream" uid="uid://2dcnxyd6rmyh" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_uh8hf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il2id"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qcd"]
+size = Vector2(14, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhvky"]
+size = Vector2(32, 32.5)
+
+[node name="Enemy_Tier4C" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_hqrr0")
+movement_speed = 40.0
+hp = 100.0
+knockback_recovery = 10.0
+experience = 100
+enemy_damage = 5
+
+[node name="EnemyImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_dehk4")
+hframes = 2
+region_rect = Rect2(0.176439, -0.103357, 152.061, 150.117)
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_il2id")
+
+[node name="HitBox" parent="." instance=ExtResource("3_vmue8")]
+collision_layer = 2
+collision_mask = 2
+damage = 5
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_57qcd")
+
+[node name="HurtBox" parent="." instance=ExtResource("4_aj68p")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_dhvky")
+
+[node name="SoundHit" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("5_uh8hf")
+volume_db = -10.0
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HitBox"]
+[editable path="HurtBox"]
