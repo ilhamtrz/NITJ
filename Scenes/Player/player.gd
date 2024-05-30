@@ -308,6 +308,10 @@ func upgrade_character(upgrade):
 
 func get_random_item():
 	var dblist = []
+	# Create a new instance of RandomNumberGenerator
+	var rng = RandomNumberGenerator.new()
+	# Set the seed value
+	#rng.seed = hash("ilham")
 	for i in UpgradeDb.UPGRADES:
 		if i in collected_upgrades: #Find already collected upgrades
 			pass
@@ -324,17 +328,21 @@ func get_random_item():
 				dblist.append(i)
 		else:
 			dblist.append(i)
+	# Shuffle the dblist array
+	shuffle_array_with_seed(dblist, rng.seed)
+	# Iterate over shuffled dblist to find a suitable upgrade
+	for item in dblist:
+		if item not in collected_upgrades and item not in upgrade_options:
+			upgrade_options.append(item)
+			return item
+	# If no suitable upgrade found, return null
+	return null
 	#if dblist.size() > 0:
 		#var randomitem = dblist.pick_random()
 		#upgrade_options.append(randomitem)
 		#return randomitem
 	#else:
 		#return null
-		
-	# Create a new instance of RandomNumberGenerator
-	var rng = RandomNumberGenerator.new()
-	# Set the seed value
-	rng.seed = hash("default")
 	if dblist.size() > 0:
 		# Use the PRNG to generate a random index within the array
 		var random_index = rng.randi_range(0, dblist.size() - 1)
@@ -347,6 +355,17 @@ func get_random_item():
 	else:
 		# If dblist is empty, return null or handle it accordingly
 		return null
+
+func shuffle_array_with_seed(arr, seed):
+	var rng = RandomNumberGenerator.new()
+	rng.seed = hash(seed)
+# Iterate over the array from the last index down to 1
+	for i in range(arr.size() - 1, 0, -1):
+		var j = rng.randi_range(0, i)
+		# Swap elements at indices i and j
+		var temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
 
 func change_time(argtime = 0):
 	time = argtime

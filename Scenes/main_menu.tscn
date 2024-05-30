@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_4fjda"]
 [ext_resource type="FontFile" uid="uid://bq6g57582qssp" path="res://Font/tenderness.otf" id="1_n6510"]
-[ext_resource type="PackedScene" uid="uid://dwetv0hpabniu" path="res://Scenes/world.tscn" id="2_mw0w6"]
+[ext_resource type="PackedScene" uid="uid://dwetv0hpabniu" path="res://Scenes/worldA.tscn" id="2_mw0w6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rl1e"]
 bg_color = Color(0, 0, 0, 0.392157)
