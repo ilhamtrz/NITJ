@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2ms1o1olmpox"]
+[gd_scene load_steps=8 format=3 uid="uid://c2ms1o1olmpox"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_4fjda"]
 [ext_resource type="FontFile" uid="uid://bq6g57582qssp" path="res://Font/tenderness.otf" id="1_n6510"]
 [ext_resource type="PackedScene" uid="uid://dwetv0hpabniu" path="res://Scenes/worldA.tscn" id="2_mw0w6"]
+[ext_resource type="PackedScene" uid="uid://dn1c7k480yokr" path="res://Scenes/worldB.tscn" id="3_tkowy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rl1e"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -29,7 +30,7 @@ corner_radius_bottom_left = 5
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4fjda")
-mainGameScene = ExtResource("2_mw0w6")
+mainGameScenes = Array[PackedScene]([ExtResource("2_mw0w6"), ExtResource("3_tkowy")])
 
 [node name="Background Color" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1280, 720)
