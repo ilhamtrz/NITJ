@@ -1,5 +1,8 @@
 extends Node2D
 
+# Import class LCG
+var LCG = preload("res://Scripts/LCG.gd")
+
 @export var enemyTier1: Array[Resource] = []
 @export var enemyTier2: Array[Resource] = []
 @export var enemyTier3: Array[Resource] = []
@@ -16,15 +19,14 @@ signal changetime(time)
 func _ready():
 	connect("changetime",Callable(player,"change_time"))
 	
-	var rng = RandomNumberGenerator.new()
+	var lcg_instance = LCG.new(GlobalSettings.seed)
 	# Set the seed value
-	rng.seed = hash(GlobalSettings.seed)
 	
-	var selectedTier1 = rng.randi_range(0, enemyTier1.size() - 1)
-	var selectedTier2 = rng.randi_range(0, enemyTier2.size() - 1)
-	var selectedTier3 = rng.randi_range(0, enemyTier3.size() - 1)
-	var selectedTier4 = rng.randi_range(0, enemyTier4.size() - 1)
-	var selectedTierFinal = rng.randi_range(0, enemyFinal.size() - 1)
+	var selectedTier1 = lcg_instance.rand_range(0, enemyTier1.size() - 1)
+	var selectedTier2 = lcg_instance.rand_range(0, enemyTier2.size() - 1)
+	var selectedTier3 = lcg_instance.rand_range(0, enemyTier3.size() - 1)
+	var selectedTier4 = lcg_instance.rand_range(0, enemyTier4.size() - 1)
+	var selectedTierFinal = lcg_instance.rand_range(0, enemyFinal.size() - 1)
 	
 	print("Tier 1 selected:",selectedTier1)
 	print("Tier 2 selected:",selectedTier2)
