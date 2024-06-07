@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 UpgradeDb="*res://Scenes/Utility/upgrade_db.tscn"
+GlobalSettings="*res://Scripts/global_settings.gd"
 
 [display]
 

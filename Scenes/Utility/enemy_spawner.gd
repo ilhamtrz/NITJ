@@ -18,7 +18,7 @@ func _ready():
 	
 	var rng = RandomNumberGenerator.new()
 	# Set the seed value
-	rng.seed = hash("12323")
+	rng.seed = hash(GlobalSettings.seed)
 	
 	var selectedTier1 = rng.randi_range(0, enemyTier1.size() - 1)
 	var selectedTier2 = rng.randi_range(0, enemyTier2.size() - 1)
