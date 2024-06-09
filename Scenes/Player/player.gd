@@ -73,6 +73,8 @@ var enemy_close = []
 @onready var sndVictory = $GUILayer/GUI/DeathPanel/snd_victory
 @onready var sndLose = $GUILayer/GUI/DeathPanel/snd_lose
 
+var seed = GlobalSettings.seed
+
 func _ready():
 	upgrade_character("icespear1")
 	attack()
@@ -232,6 +234,7 @@ func set_expbar(set_value = 1, set_max_value = 100):
 	expBar.max_value = set_max_value
 
 func levelup():
+	
 	sndLevelUp.play()
 	lblLevel.text = str("Level: ",experience_level)
 	var tween = levelPanel.create_tween()
@@ -242,9 +245,10 @@ func levelup():
 	var optionsmax = 3
 	while options < optionsmax:
 		var option_choice = itemOptions.instantiate()
-		option_choice.item = get_random_item()
+		option_choice.item = get_random_item(seed)
 		upgradeOptions.add_child(option_choice)
 		options += 1
+	seed = seed + 1
 	get_tree().paused = true
 
 func upgrade_character(upgrade):
@@ -306,12 +310,12 @@ func upgrade_character(upgrade):
 	get_tree().paused = false
 	calculate_experience(0)
 
-func get_random_item():
+func get_random_item(seed:int):
 	var dblist = []
 	# Create a new instance of RandomNumberGenerator
 	var rng = RandomNumberGenerator.new()
 	# Set the seed value
-	#rng.seed = hash("ilham")
+	rng.seed = hash(seed)
 	for i in UpgradeDb.UPGRADES:
 		if i in collected_upgrades: #Find already collected upgrades
 			pass
@@ -329,7 +333,7 @@ func get_random_item():
 		else:
 			dblist.append(i)
 	# Shuffle the dblist array
-	shuffle_array_with_seed(dblist, rng.seed)
+	shuffle_array_with_seed(dblist, seed)
 	# Iterate over shuffled dblist to find a suitable upgrade
 	for item in dblist:
 		if item not in collected_upgrades and item not in upgrade_options:

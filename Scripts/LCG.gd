@@ -24,3 +24,7 @@ func randf():
 func rand_range(min, max):
 	# Returns a random integer between min and max
 	return min + rand() % (max - min + 1)
+	
+func randf_range(min, max):
+	# Returns a random integer between min and max
+	return min + randf() % (max - min + 1)
