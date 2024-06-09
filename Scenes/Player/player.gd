@@ -15,6 +15,7 @@ var collected_experience = 0
 var iceSpear = preload("res://Scenes/Player/Attack/spear.tscn")
 var tornado = preload("res://Scenes/Player/Attack/tornado.tscn")
 var javelin = preload("res://Scenes/Player/Attack/javelin.tscn")
+var LCG = preload("res://Scripts/LCG.gd")
 
 #AttackNodes
 @onready var iceSpearTimer = %IceSpearTimer
@@ -74,6 +75,7 @@ var enemy_close = []
 @onready var sndLose = $GUILayer/GUI/DeathPanel/snd_lose
 
 var seed = GlobalSettings.seed
+var lcg_instance = LCG.new(seed)
 
 func _ready():
 	upgrade_character("icespear1")
@@ -361,11 +363,10 @@ func get_random_item(seed:int):
 		return null
 
 func shuffle_array_with_seed(arr, seed):
-	var rng = RandomNumberGenerator.new()
-	rng.seed = hash(seed)
+	var lcg_ins = LCG.new(seed)
 # Iterate over the array from the last index down to 1
 	for i in range(arr.size() - 1, 0, -1):
-		var j = rng.randi_range(0, i)
+		var j = lcg_ins.rand_range(0, i)
 		# Swap elements at indices i and j
 		var temp = arr[i]
 		arr[i] = arr[j]
