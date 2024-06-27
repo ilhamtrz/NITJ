@@ -5,15 +5,6 @@ var LCG = preload("res://Scripts/LCG.gd")
 @export var mainGameScenes: Array[PackedScene] = []
 
 @onready var seed_text = get_node("MarginContainer/VBoxContainer/LineEdit")
-# Create a new instance of RandomNumberGenerator
-#var rng = RandomNumberGenerator.new()
-#Set the seed value
-
-# Initialize the seed value
-#var seed_value = 1
-
-# Create an instance of the LCG class with the seed value
-
 
 func _ready():
 	seed_text.grab_focus()
