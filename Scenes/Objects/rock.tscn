@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnu24n87wrql5"]
+[gd_scene load_steps=3 format=3 uid="uid://bnu24n87wrql5"]
 
 [ext_resource type="Texture2D" uid="uid://cabpod7fqu7jh" path="res://Graphics/Environments/Rocks and Stone/Rock1_5.png" id="1_x6gk8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kd7iu"]
+radius = 281.711
 
 [node name="Rock" type="StaticBody2D"]
 
@@ -12,3 +15,8 @@ texture = ExtResource("1_x6gk8")
 position = Vector2(4, -3)
 polygon = PackedVector2Array(2, -13, 11, -5, 11, 11, 5, 18, -7, 18, -14, 11, -13, -5, -6, -13)
 one_way_collision_margin = 128.0
+
+[node name="ProximityCollision" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_kd7iu")
+disabled = true
