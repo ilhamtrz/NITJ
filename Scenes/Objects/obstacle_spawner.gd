@@ -7,6 +7,12 @@ var LCG = preload("res://Scripts/LCG.gd")
 @export var number_of_obstacles = 30  # Default number of obstacles
 @export var min_distance_between_obstacles = 300  # Minimum distance between obstacles
 
+# Define the world boundaries
+@export var world_min_x = -1000
+@export var world_max_x = 1000
+@export var world_min_y = -1000
+@export var world_max_y = 1000
+
 var lcg_instance = LCG.new(GlobalSettings.seed)
 var rng = RandomNumberGenerator.new()
 var obstacle_positions = []
@@ -36,8 +42,8 @@ func get_valid_position(seed: int) -> Vector2:
 
 func get_random_position(seed: int) -> Vector2:
 	rng.seed = hash(seed)
-	var x = rng.randf_range(0, get_viewport_rect().size.x)
-	var y = rng.randf_range(0, get_viewport_rect().size.y)
+	var x = rng.randf_range(world_min_x, world_max_x)
+	var y = rng.randf_range(world_min_y, world_max_y)
 	return Vector2(x, y)
 
 func is_position_valid(position: Vector2) -> bool:
