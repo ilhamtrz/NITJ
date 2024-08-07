@@ -37,7 +37,7 @@ func get_valid_position(seed: int) -> Vector2:
 		position = get_random_position(seed + attempts)
 		attempts += 1
 	if attempts == 100:
-		print("Could not find a valid position after 100 attempts, placing it anyway.")
+		print("Obstacle spawnt at position: ", position)
 	return position
 
 func get_random_position(seed: int) -> Vector2:
